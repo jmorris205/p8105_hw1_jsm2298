@@ -2,29 +2,60 @@
 title: "p8105_hw1_jsm2298"
 author: "Jonathan Morris"
 date: "2026-09-22"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+# Load Packages
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(palmerpenguins)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+# Question 1: 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+## Load Data
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+## Penguins Data Description:
+
+
+## Penguin Data Scatterplot:
+```{r, echo = F, warnings = F}
+p <- ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = species)) + 
+  geom_point() + 
+  labs(x = 'Flipper Length (mm)', y = 'Bill Length (mm)', color = 'Species') +
+  ggtitle("Scatterplot of Penguin Flipper vs Bill Length Across Species")
+
+print(p)
+
+ggsave('p8105_hw1_plot01.png', p)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+# Question 2:
+
+## Create Data Frame:
+```{r}
+## First, set our seed for reproducibility:
+set.seed(112)
+
+## Now generate the data:
+rand_df <- tibble(
+  rand_num = rnorm(10),
+  rand_logic = case_when(
+    rand_num > 0 ~ TRUE,
+    TRUE ~ FALSE
+  ),
+  rand_char = c('my', 'all', 'time', 'favorite', 'alliums', 'are', "the", "onion", "and", "scallion"),
+  rand_fac = as.factor(rbinom(10, 2, 0.5))
+)
+```
+
+## Attempt to take some means:
+
