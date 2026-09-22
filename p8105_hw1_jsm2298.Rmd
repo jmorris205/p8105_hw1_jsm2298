@@ -25,6 +25,7 @@ data("penguins", package = "palmerpenguins")
 ```
 ## Penguins Data Description:
 
+The penguins dataset includes size measurements of adult foraging penguins near the Palmer research station in Antarctica. The data contains variables such as the species of the penguin, which island they were found and measured on, both bill and flipper length in mm, bill depth, body mass, sex, and the year the data was collected. The data has 344 rows and 8 columns. The mean flipper length is 200.9152 millimeters.
 
 ## Penguin Data Scatterplot:
 ```{r, echo = F, warnings = F}
