@@ -55,7 +55,32 @@ rand_df <- tibble(
   rand_char = c('my', 'all', 'time', 'favorite', 'alliums', 'are', "the", "onion", "and", "scallion"),
   rand_fac = as.factor(rbinom(10, 2, 0.5))
 )
+
+pull(rand_df, rand_num)
 ```
 
 ## Attempt to take some means:
+```{r}
+# Mean of random numeric vector:
+m <- mean(pull(rand_df, rand_num))
+
+paste0("The mean of our random sample is: ", m)
+
+# Mean of random logical vector:
+m <- mean(pull(rand_df, rand_logic))
+
+paste0("The mean of our random logical vector is: ", m)
+
+# Mean of character vector:
+m <- mean(pull(rand_df, rand_char))
+
+paste0("The mean of our character vector is: ", m, ", meaning that we cannot take the mean of a character vector.")
+
+# Mean of character vector:
+m <- mean(pull(rand_df, rand_fac))
+
+paste0("The mean of our factor vector is: ", m, ", meaning that we cannot take the mean of a factor vector.")
+
+```
+
 
