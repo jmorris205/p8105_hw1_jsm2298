@@ -28,14 +28,17 @@ data("penguins", package = "palmerpenguins")
 The penguins dataset includes size measurements of adult foraging penguins near the Palmer research station in Antarctica. The data contains variables such as the species of the penguin, which island they were found and measured on, both bill and flipper length in mm, bill depth, body mass, sex, and the year the data was collected. The data has 344 rows and 8 columns. The mean flipper length is 200.9152 millimeters.
 
 ## Penguin Data Scatterplot:
-```{r, echo = F, warnings = F}
-p <- ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = species)) + 
-  geom_point() + 
-  labs(x = 'Flipper Length (mm)', y = 'Bill Length (mm)', color = 'Species') +
-  ggtitle("Scatterplot of Penguin Flipper vs Bill Length Across Species")
+```{r, warnings = F}
+# Make the plot:
+p <- ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = species)) + # Specify axes and color.
+  geom_point() + # Tell R to make a scatterplot.
+  labs(x = 'Flipper Length (mm)', y = 'Bill Length (mm)', color = 'Species') + # Add axes and color labels.
+  ggtitle("Scatterplot of Penguin Flipper vs Bill Length Across Species") # Add main title.
 
+# Print the plot:
 print(p)
 
+# Save plot to requested file:
 ggsave('p8105_hw1_plot01.png', p)
 ```
 
@@ -56,8 +59,6 @@ rand_df <- tibble(
   rand_char = c('my', 'all', 'time', 'favorite', 'alliums', 'are', "the", "onion", "and", "scallion"),
   rand_fac = as.factor(rbinom(10, 2, 0.5))
 )
-
-pull(rand_df, rand_num)
 ```
 
 ## Attempt to take some means:
@@ -83,5 +84,5 @@ m <- mean(pull(rand_df, rand_fac))
 paste0("The mean of our factor vector is: ", m, ", meaning that we cannot take the mean of a factor vector.")
 
 ```
-
+Based on these results, the mean function fails for the character and factor vectors but works for the logical and numeric vectors.
 
